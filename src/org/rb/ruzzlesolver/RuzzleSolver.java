@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.rb.ruzzlesolver.ds.Dictionary;
 import org.rb.ruzzlesolver.ds.Position;
+import org.rb.ruzzleswiper.RuzzleSwiper;
 
 public class RuzzleSolver {
 
@@ -50,9 +51,11 @@ public class RuzzleSolver {
 		CustomStringComparator myComparator = new CustomStringComparator("");
 		Collections.sort(validWords, myComparator);
 
+		RuzzleSwiper ruzzleSwiper = new RuzzleSwiper(30);
 		for (String word : validWords) {
 			System.out.println(word);
 			tiles = wordTilesMapping.get(word);
+			ruzzleSwiper.clickPositions(tiles);
 			for (Position position : tiles) {
 				System.out.print("(" + position.getX() + "," + position.getY() + ")->");
 			}
