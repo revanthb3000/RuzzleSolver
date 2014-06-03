@@ -41,7 +41,7 @@ public class RuzzleSolver {
 	 * The main function of sorts. Takes in an input, forms the table, solves the puzzle and prints the results in ascending order of length.
 	 * @param inputString
 	 */
-	public static void startSolving(String inputString) {
+	public static void startSolving(String inputString, int wordLimit) {
 		getTableFromString(inputString);
 		solvePuzzle();
 
@@ -52,6 +52,7 @@ public class RuzzleSolver {
 		Collections.sort(validWords, myComparator);
 
 		RuzzleSwiper ruzzleSwiper = new RuzzleSwiper(60);
+		int numOfWords = 0;
 		for (String word : validWords) {
 			System.out.println(word);
 			tiles = wordTilesMapping.get(word);
@@ -60,6 +61,11 @@ public class RuzzleSolver {
 				System.out.print("(" + position.getX() + "," + position.getY() + ")->");
 			}
 			System.out.println("END\n");
+
+			numOfWords++;
+			if(numOfWords>=wordLimit){
+				break;
+			}
 		}
 	}
 

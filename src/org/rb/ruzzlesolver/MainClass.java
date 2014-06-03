@@ -3,7 +3,8 @@ package org.rb.ruzzlesolver;
 public class MainClass {
 
 	public static void main(String[] args){
-		RuzzleSolver.startSolving("nost leer tasl dodv");
+		int wordLimit = 80;
+		RuzzleSolver.startSolving("tlts esas secn fnde", wordLimit);
 	}
 	
 }
