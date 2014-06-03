@@ -51,7 +51,7 @@ public class RuzzleSolver {
 		CustomStringComparator myComparator = new CustomStringComparator("");
 		Collections.sort(validWords, myComparator);
 
-		RuzzleSwiper ruzzleSwiper = new RuzzleSwiper(30);
+		RuzzleSwiper ruzzleSwiper = new RuzzleSwiper(60);
 		for (String word : validWords) {
 			System.out.println(word);
 			tiles = wordTilesMapping.get(word);
