@@ -2,6 +2,8 @@ package org.rb.ruzzleswiper;
 
 import java.awt.Robot;
 import java.awt.event.InputEvent;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.ArrayList;
 
 import org.rb.ruzzlesolver.ds.Position;
@@ -31,26 +33,39 @@ public class RuzzleSwiper {
 	public RuzzleSwiper(int time) {
 		pauseTime = time;
 		tileCoordinates = new Position[4][4];
+		int[][] X = new int[4][4];
+		int[][] Y = new int[4][4];
 
-		tileCoordinates[0][0] = new Position(1176, 306, 4);
-		tileCoordinates[0][1] = new Position(1293, 306, 4);
-		tileCoordinates[0][2] = new Position(1412, 306, 4);
-		tileCoordinates[0][3] = new Position(1527, 306, 4);
+		try{
+			int xCount = 0, yCount = 0;
+			FileReader fileReader = new FileReader("positions.conf");
+			BufferedReader bufferedReader = new BufferedReader(fileReader);
+			String line = "";
+			while((line=bufferedReader.readLine())!=null){
+				if((line.trim().contains("#")) || (line.trim().equals(""))){
+					continue;
+				}
+				else{
+					X[xCount][yCount] = Integer.parseInt(line.split(",")[0].trim());
+					Y[xCount][yCount] = Integer.parseInt(line.split(",")[1].trim());
+					yCount++;
+					if(yCount==4){
+						xCount++;
+						yCount=0;
+					}
+				}
+			}
+			bufferedReader.close();
+			fileReader.close();
+		}
+		catch(Exception e){
+		}
 
-		tileCoordinates[1][0] = new Position(1176, 430, 4);
-		tileCoordinates[1][1] = new Position(1293, 430, 4);
-		tileCoordinates[1][2] = new Position(1412, 430, 4);
-		tileCoordinates[1][3] = new Position(1527, 430, 4);
-
-		tileCoordinates[2][0] = new Position(1176, 537, 4);
-		tileCoordinates[2][1] = new Position(1293, 537, 4);
-		tileCoordinates[2][2] = new Position(1412, 537, 4);
-		tileCoordinates[2][3] = new Position(1527, 537, 4);
-
-		tileCoordinates[3][0] = new Position(1176, 657, 4);
-		tileCoordinates[3][1] = new Position(1293, 657, 4);
-		tileCoordinates[3][2] = new Position(1412, 657, 4);
-		tileCoordinates[3][3] = new Position(1527, 657, 4);
+		for(int i=0;i<4;i++){
+			for(int j=0;j<4;j++){
+				tileCoordinates[i][j] = new Position(X[i][j], Y[i][j], 4);
+			}
+		}
 	}
 
 	/**
