@@ -3,7 +3,7 @@ package org.rb.ruzzlesolver;
 public class MainClass {
 
 	public static void main(String[] args){
-		int roundNumber = 1;
+		int roundNumber = 3;
 
 		int wordLimit = 0;
 		if(roundNumber==1){
@@ -15,7 +15,7 @@ public class MainClass {
 		else{
 			wordLimit = 1000;
 		}
-		RuzzleSolver.startSolving("wlye rasr gpta ahia", wordLimit);
+		RuzzleSolver.startSolving("issm eatt nile ceve", wordLimit);
 	}
 	
 }
