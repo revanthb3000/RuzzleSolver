@@ -49,28 +49,28 @@ public class MainApp {
 	private void initialize() {
 		System.setProperty("http.proxySet", "false");
 		frame = new JFrame();
-		frame.setBounds(100, 100, 576, 193);
+		frame.setBounds(100, 100, 631, 260);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		wordLimitTextField = new JTextField();
 		wordLimitTextField.setText("500");
-		wordLimitTextField.setBounds(280, 44, 122, 16);
+		wordLimitTextField.setBounds(316, 70, 122, 16);
 		frame.getContentPane().add(wordLimitTextField);
 		wordLimitTextField.setColumns(10);
 		
 		JLabel lblWordLimit = new JLabel("Word Limit");
-		lblWordLimit.setBounds(184, 44, 91, 16);
+		lblWordLimit.setBounds(220, 70, 91, 16);
 		frame.getContentPane().add(lblWordLimit);
 		
 		puzzleStringTextField = new JTextField();
 		puzzleStringTextField.setText("abcd efgh hijk lmno");
-		puzzleStringTextField.setBounds(280, 12, 143, 20);
+		puzzleStringTextField.setBounds(316, 38, 143, 20);
 		frame.getContentPane().add(puzzleStringTextField);
 		puzzleStringTextField.setColumns(10);
 		
 		JLabel lblWhatDoWe = new JLabel("What do we have to solve ?");
-		lblWhatDoWe.setBounds(102, 14, 173, 16);
+		lblWhatDoWe.setBounds(138, 40, 173, 16);
 		frame.getContentPane().add(lblWhatDoWe);
 		
 		JButton btnNewButton = new JButton("Solve Puzzle");
@@ -79,7 +79,7 @@ public class MainApp {
 				RuzzleSolver.startSolving(puzzleStringTextField.getText(), Integer.parseInt(wordLimitTextField.getText()));			
 			}
 		});
-		btnNewButton.setBounds(172, 91, 251, 26);
+		btnNewButton.setBounds(208, 117, 251, 26);
 		frame.getContentPane().add(btnNewButton);
 		
 	}
