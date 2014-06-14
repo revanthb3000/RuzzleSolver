@@ -9,11 +9,18 @@ import java.awt.geom.Rectangle2D;
 
 import static java.awt.GraphicsDevice.WindowTranslucency.*;
  
-public class Calibrate extends JFrame {
+/**
+ * This frame lets the user configure the Configuration file easily.
+ * Gets to user to click on the 16 tiles thereby getting the pixel positions automatically.
+ * Perfect for the average Joe !
+ * @author RB
+ *
+ */
+public class Calibrator extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
 	
-    public Calibrate() {
+    public Calibrator() {
         super("ShapedWindow");
         getContentPane().setLayout(new GridBagLayout());
  
@@ -31,6 +38,7 @@ public class Calibrate extends JFrame {
             }
         });
 
+        //A full screen window !!
     	int screenWidth = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
     	int screenHeight = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
         setUndecorated(true);
@@ -38,7 +46,7 @@ public class Calibrate extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        JLabel jLabel = new JLabel("Click on the tile #1");
+        JLabel jLabel = new JLabel("Start a practice round and click on tile #1 (Row No. 1 & Column No. 1)");
         jLabel.setFont(new Font("Dialog", Font.BOLD, 18));
         getContentPane().add(jLabel);
         
@@ -48,11 +56,6 @@ public class Calibrate extends JFrame {
         addMouseListener(calibratorMouseListener);
     }
     
-    public void closeWindow() {
-        WindowEvent wev = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
-        Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(wev);
-    }
- 
     public static void main(String[] args) {
         // Determine what the GraphicsDevice can support.
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -76,7 +79,7 @@ public class Calibrate extends JFrame {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                Calibrate sw = new Calibrate();
+                Calibrator sw = new Calibrator();
  
                 // Set the window to 70% translucency, if supported.
                 if (isTranslucencySupported) {

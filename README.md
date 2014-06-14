@@ -7,6 +7,7 @@ What does it do ?
 -----------------
 * Takes in a Ruzzle grid as input and finds all words that can be formed.
 * An automatic swiper that in conjunction with Bluestacks lets you swipe every possible word thereby getting an insanely high score !
+* A calibrator is present that provides an easy way to set the screen co-ordinates of each tile.
 
 How does it work ?
 ------------------

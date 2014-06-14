@@ -29,6 +29,11 @@ public class RuzzleSwiper {
 	 * Set a higher value to debug it.
 	 */
 	private int pauseTime;
+	
+	/**
+	 * Name of the Configuration file.
+	 */
+	private final String CONFIG_FILE_NAME = "positions.conf";
 
 	public RuzzleSwiper(int time) {
 		pauseTime = time;
@@ -38,7 +43,7 @@ public class RuzzleSwiper {
 
 		try{
 			int xCount = 0, yCount = 0;
-			FileReader fileReader = new FileReader("positions.conf");
+			FileReader fileReader = new FileReader(CONFIG_FILE_NAME);
 			BufferedReader bufferedReader = new BufferedReader(fileReader);
 			String line = "";
 			while((line=bufferedReader.readLine())!=null){
@@ -59,6 +64,8 @@ public class RuzzleSwiper {
 			fileReader.close();
 		}
 		catch(Exception e){
+			System.out.println("Exception while reading file.");
+			e.printStackTrace();
 		}
 
 		for(int i=0;i<4;i++){
